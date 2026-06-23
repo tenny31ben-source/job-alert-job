@@ -1,0 +1,39 @@
+name: Job Alert Bot
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Restore seen jobs cache
+        uses: actions/cache@v3
+        with:
+          path: seen_jobs.json
+          key: seen-jobs-${{ github.run_id }}
+          restore-keys: |
+            seen-jobs-
+
+      - name: Run Job Alert Bot
+        run: python main.py
+
+      - name: Save seen jobs cache
+        uses: actions/cache@v3
+        with:
+          path: seen_jobs.json
+          key: seen-jobs-${{ github.run_id }}
