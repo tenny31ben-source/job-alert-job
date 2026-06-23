@@ -3,7 +3,7 @@
 #  Edit this file to customize your search
 # ============================================================
 
-TELEGRAM_BOT_TOKEN = "8702836830:AAHCxk6YUuC0AjYFdEfMaOVXiRsvYJYhips"
+TELEGRAM_BOT_TOKEN = "8702836830:AAFm__XOndH5Xgoz9oR9ndjLQpRATmSRbPM"
 TELEGRAM_CHAT_ID   = "6197077931"
 
 # --- Job Roles to Search ---
